@@ -6,6 +6,7 @@ import SignUp from './views/pages/signup'
 import Restaurant from './views/pages/restaurant'
 
 import './App.css'
+import "./assets/custom.css"
 
 function App() {
   return (
