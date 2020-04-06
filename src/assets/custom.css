@@ -1,0 +1,89 @@
+@media screen and (min-width: 425px) {
+    .carousel .slide .legend {
+        top: 40%;
+        bottom: unset;
+        margin-left: 0px;
+        width: unset;
+        left: 25.5%;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        opacity: 1;
+        background: transparent;
+    }
+    .app-icon {
+        width: 50%;
+    }
+
+    .select-restaurant {
+        width: 90%;
+    }
+
+    .scan-button {
+        width: 90%;
+    }
+  }
+
+@media screen and (min-width: 1024px) {
+    .carousel .slide .legend {
+        top: 40%;
+        bottom: unset;
+        margin-left: 0px;
+        width: 250px;
+        left: 43.5%;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        opacity: 1;
+        background: transparent;
+    }
+    .app-icon {
+        width: 40%;
+    }
+
+    .select-restaurant {
+        width: 60%;
+    }
+
+    .scan-button {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .app-icon {
+        width: 25%;
+    }
+    
+    .select-restaurant {
+        width: 40%;
+    }
+    
+    .scan-button {
+        width: 15%;
+    }
+}
+
+.carousel.carousel-slider {
+    height: 100vh;
+}
+
+.carousel .slide img {
+    height: 100vh;
+}
+
+.app-icon {
+    z-index: 1;
+    margin-bottom: 80px;
+}
+
+.scan-button {
+    background-color: #0051ae !important;
+    border-radius: 30px !important;
+    height: 50px;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    margin-bottom: 70px !important;
+}
