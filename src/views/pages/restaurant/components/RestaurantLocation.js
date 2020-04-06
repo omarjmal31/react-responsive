@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TreeItem from '@material-ui/lab/TreeItem';
 import { Typography, makeStyles } from '@material-ui/core';
 import MapOutlinedIcon from '@material-ui/icons/MapOutlined';
@@ -27,18 +27,37 @@ const useStyles = makeStyles(theme => ({
         width: 17,
         height: 17,
     },
+    mapIconRtl: {
+        marginLeft: theme.spacing(1),
+        border: '1px solid darkgrey',
+        borderRadius: 30,
+        padding: 5,
+        width: 17,
+        height: 17,
+    },
     label: {
         position: "absolute",
         top: 3,
+    },
+    treeItemRtl: {
+        "& .MuiTreeItem-iconContainer .MuiSvgIcon-root": {
+            right: "350px",
+            top: "-12px",
+            position: "absolute"
+        }
     }
-
 }));
 
 const RestaurantLocation = props => {
+    const { rtl } = props;
+
     const MapWithAMarker = withScriptjs(withGoogleMap(props =>
         <GoogleMap
             defaultZoom={8}
             defaultCenter={{ lat: -34.397, lng: 150.644 }}
+            defaultOptions={{
+                scrollwheel: false
+            }}
         >
             <Marker
                 position={{ lat: -34.397, lng: 150.644 }}
@@ -47,9 +66,9 @@ const RestaurantLocation = props => {
     ));
     const classes = useStyles();
     return (
-        <TreeItem nodeId="12" label={
+        <TreeItem nodeId="12" className={rtl ? classes.treeItemRtl : ""} label={
             <div className={classes.labelRoot}>
-                <MapOutlinedIcon className={classes.mapIcon} />
+                <MapOutlinedIcon className={rtl ? classes.mapIconRtl : classes.mapIcon} />
                 <span className={classes.label}>{'RestaurantLocation'}</span>
             </div>
         }>
@@ -58,10 +77,10 @@ const RestaurantLocation = props => {
                 label={
                     <Typography component="div">
                         <MapWithAMarker
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAude_uCKEoOHG6m8NDCVQrTYZdYduVqFk&v=3.exp&libraries=geometry,drawing,places"
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOr9KBA_h8BsRP8ylFCDy99SIupT3gl6o"
                             loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `400px` }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div style={{ height: `400px`, direction: `ltr` }} />}
+                            mapElement={<div style={{ height: `100%`, direction: `ltr` }} />}
                         >
                             <div>University of San Francisco</div>
                         </MapWithAMarker>

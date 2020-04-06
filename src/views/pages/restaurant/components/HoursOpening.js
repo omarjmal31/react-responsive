@@ -27,19 +27,35 @@ const useStyles = makeStyles(theme => ({
         width: 17,
         height: 17,
     },
+    timeIconRtl: {
+        marginLeft: theme.spacing(1),
+        border: '1px solid darkgrey',
+        borderRadius: 30,
+        padding: 5,
+        width: 17,
+        height: 17,
+    },
     label: {
         position: "absolute",
         top: 3,
+    },
+    treeItemRtl: {
+        "& .MuiTreeItem-iconContainer .MuiSvgIcon-root": {
+            right: "350px",
+            top: "-12px",
+            position: "absolute"
+        }
     }
 }));
 
 const HoursOpening = props => {
     const classes = useStyles();
+    const { rtl } = props;
 
     return (
-        <TreeItem nodeId="1" label={
+        <TreeItem nodeId="1" className={rtl ? classes.treeItemRtl : ""} label={
             <div className={classes.labelRoot}>
-                <AccessTimeIcon className={classes.timeIcon}/>
+                <AccessTimeIcon className={rtl ? classes.timeIconRtl: classes.timeIcon}/>
                 <span className={classes.label}>{'Hours Opening'}</span>
             </div>
         }>

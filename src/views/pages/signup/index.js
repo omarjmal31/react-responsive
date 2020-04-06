@@ -3,8 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Background from '../../../assets/background.jpg';
 import Logo from '../../../assets/logo.svg';
-import PaymentCard from './cards/payment'
-import ResposiveCard from './cards/responsive'
+import BasicCard from './cards/payment/basic'
+import PremiumCard from './cards/payment/premium'
+import DiamondCard from './cards/payment/diamond'
+import CallCard from './cards/responsive/call'
+import NextCard from './cards/responsive/next'
+import PositionCard from './cards/responsive/position'
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -38,9 +42,7 @@ const useStyles = makeStyles({
     transition: .5,
     opacity: 1,
     position: "relative",
-
     marginTop: -300,
-    // textAlign:"center",
   },
 
   text: {
@@ -101,12 +103,16 @@ function SignUp() {
       </div>
       <Grid container spacing={6} className={classes.cardContainer}>
         <Grid item xs={12}>
-          <Grid container justify="center" spacing={spacing}>
-            {[0, 1, 2].map((value) => (
-              <Grid key={value} item>
-                <PaymentCard />
-              </Grid>
-            ))}
+          <Grid container justify="center" spacing={spacing}>   
+            <Grid  item>
+              <BasicCard />
+            </Grid>
+            <Grid  item>
+              <PremiumCard />
+            </Grid>
+            <Grid  item>
+              <DiamondCard />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -120,11 +126,15 @@ function SignUp() {
       <Grid container spacing={6} className={classes.cardContainer}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={spacing}>
-            {[0, 1, 2].map((value) => (
-              <Grid key={value} item>
-                <ResposiveCard />
-              </Grid>
-            ))}
+            <Grid  item>
+              <CallCard />
+            </Grid>
+            <Grid  item>
+              <NextCard />
+            </Grid>
+            <Grid  item>
+              <PositionCard />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

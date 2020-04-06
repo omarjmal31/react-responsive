@@ -31,6 +31,14 @@ const useStyles = makeStyles(theme => ({
         width: 17,
         height: 17,
     },
+    shareIconRtl: {
+        marginLeft: theme.spacing(1),
+        border: '1px solid darkgrey',
+        borderRadius: 30,
+        padding: 5,
+        width: 17,
+        height: 17,
+    },
     label: {
         position: "absolute",
         top: 3,
@@ -70,21 +78,29 @@ const useStyles = makeStyles(theme => ({
         padding: 8,
         marginRight: 10,
     },
-
+    treeItemRtl: {
+        "& .MuiTreeItem-iconContainer .MuiSvgIcon-root": {
+            right: "350px",
+            top: "-12px",
+            position: "absolute"
+        }
+    }
 }));
 
 const ShareMenu = props => {
     const classes = useStyles();
+    const { rtl } = props;
 
     return (
-        <TreeItem nodeId="20" label={
+        <TreeItem nodeId="20" className={rtl ? classes.treeItemRtl : ""} label={
             <div className={classes.labelRoot}>
-                <ShareOutlinedIcon className={classes.shareIcon}/>
+                <ShareOutlinedIcon className={rtl ? classes.shareIconRtl : classes.shareIcon}/>
                 <span className={classes.label}>{'ShareMenu'}</span>
             </div>
             }>
             <TreeItem
                 nodeId="21"
+                style={{direction: "ltr"}}
                 label={
                     <Typography component="div">
                         <IconButton className={classes.personIcon}><PregnantWomanOutlinedIcon /></IconButton>

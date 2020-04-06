@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Grid, Drawer, IconButton, Slide, Typography } from '@material-ui/core';
-import { ArrowUpward, ExpandMore, Restaurant } from '@material-ui/icons';
+import { ArrowUpward, ExpandMore } from '@material-ui/icons';
 import TreeView from '@material-ui/lab/TreeView';
 import Address from './components/Address';
 import HoursOpening from './components/HoursOpening';
@@ -11,9 +11,6 @@ import ShareMenu from './components/ShareMenu';
 import Reviews from './components/Reviews';
 import Button from '@material-ui/core/Button';
 import CallIcon from '@material-ui/icons/Call';
-import Avatar from '@material-ui/core/Avatar';
-import Flag1 from '../../../assets/flag1.png';
-import Flag2 from '../../../assets/flag2.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -80,6 +77,15 @@ const useStyles = makeStyles(theme => ({
   },
   callButton: {
     background: "#ff9800",
+  },
+  callButtonRtl: {
+    background: "#ff9800",
+    "& .MuiButton-startIcon": {
+      marginRight: "0px"
+    },
+    "& .MuiSvgIcon-root": {
+      marginLeft: "8px"
+    }
   }
 }));
 
@@ -125,16 +131,16 @@ const DrawerMenu = props => {
                 expanded={expanded}
                 onNodeToggle={handleChange}
               >
-                <HoursOpening />
-                <Address />
-                <RestaurantLocation />
-                <Reservation />
-                <ShareMenu />
-                <Reviews />               
+                <HoursOpening rtl={state.rtl} />
+                <Address rtl={state.rtl} />
+                <RestaurantLocation rtl={state.rtl} />
+                <Reservation rtl={state.rtl} />
+                <ShareMenu rtl={state.rtl} />
+                <Reviews rtl={state.rtl} />
               </TreeView>
             </Grid>
             <Grid item className={classes.itemButton}>
-              <Button variant="contained" color="primary" startIcon={<CallIcon />} className={classes.callButton}>Call Now</Button>
+              <Button variant="contained" color="primary" startIcon={<CallIcon />} className={state.rtl ? classes.callButtonRtl : classes.callButton}>Call Now</Button>
             </Grid>
           </Grid>
         </Slide>
@@ -143,7 +149,7 @@ const DrawerMenu = props => {
     </div>
   );
 
-  return <StyledDrawer anchor={'bottom'} open={state.bottom}>{sideList('bottom')}</StyledDrawer>;
+  return <StyledDrawer style={state.rtl ? {direction: 'rtl'} : {direction: 'ltr'}} anchor={'bottom'} open={state.bottom}>{sideList('bottom')}</StyledDrawer>;
 };
 
 export default DrawerMenu;

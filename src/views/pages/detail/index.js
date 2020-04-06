@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import { makeStyles, Grid, IconButton, Typography } from '@material-ui/core';
 import { ArrowBackIos } from '@material-ui/icons';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -108,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function RestaurantDetail() {
+function RestaurantDetail(props) {
     const classes = useStyles();
     const [widthStatus, setWidthStatus] = React.useState('desktop');
     const [open, setOpen] = React.useState(false);
@@ -149,7 +150,7 @@ function RestaurantDetail() {
 
     return (
         <div className={classes.restaurant}>
-            <IconButton className={classes.backIcon}><ArrowBackIos color={'primary'} /></IconButton>
+            <IconButton className={classes.backIcon} onClick={() => props.history.goBack()}><ArrowBackIos color={'primary'} /></IconButton>
             <div style={{ position: 'relative' }}>
                 <img src={LogoIcon} className={classes.logoImg} />
             </div>
@@ -201,4 +202,4 @@ function RestaurantDetail() {
     );
 }
 
-export default RestaurantDetail;
+export default withRouter(RestaurantDetail);

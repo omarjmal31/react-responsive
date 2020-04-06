@@ -26,6 +26,14 @@ const useStyles = makeStyles(theme => ({
         width: 17,
         height: 17,
     },
+    reservationIconRtl: {
+        marginLeft: theme.spacing(1),
+        border: '1px solid darkgrey',
+        borderRadius: 30,
+        padding: 5,
+        width: 17,
+        height: 17,
+    },
     label: {
         position: "absolute",
         top: 3,
@@ -56,16 +64,24 @@ const useStyles = makeStyles(theme => ({
     sendButton: {
         background: "#ff9800",
         float: 'right',
+    },
+    treeItemRtl: {
+        "& .MuiTreeItem-iconContainer .MuiSvgIcon-root": {
+            right: "350px",
+            top: "-12px",
+            position: "absolute"
+        }
     }
 }));
 
 const Reservation = props => {
     const classes = useStyles();
+    const { rtl } = props;
 
     return (
-        <TreeItem nodeId="14" label={
+        <TreeItem nodeId="14" className={rtl ? classes.treeItemRtl : ""} label={
             <div className={classes.labelRoot}>
-                <NearMeOutlinedIcon className={classes.reservationIcon} />
+                <NearMeOutlinedIcon className={rtl ? classes.reservationIconRtl: classes.reservationIcon} />
                 <span className={classes.label}>{'Reservation'}</span>
             </div>
         }>

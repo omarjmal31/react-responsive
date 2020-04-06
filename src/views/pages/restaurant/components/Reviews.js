@@ -27,6 +27,14 @@ const useStyles = makeStyles(theme => ({
         width: 17,
         height: 17,
     },
+    reviewIconRtl: {
+        marginLeft: theme.spacing(1),
+        border: '1px solid darkgrey',
+        borderRadius: 30,
+        padding: 5,
+        width: 17,
+        height: 17,
+    },
     label: {
         position: "absolute",
         top: 3,
@@ -46,16 +54,24 @@ const useStyles = makeStyles(theme => ({
     sendButton: {
         background: "#ff9800",
         float: 'right',
+    },
+    treeItemRtl: {
+        "& .MuiTreeItem-iconContainer .MuiSvgIcon-root": {
+            right: "350px",
+            top: "-12px",
+            position: "absolute"
+        }
     }
 }));
 
 const Reviews = props => {
     const classes = useStyles();
+    const { rtl } = props;
 
     return (
-        <TreeItem nodeId="22" label={
+        <TreeItem nodeId="22" className={rtl ? classes.treeItemRtl : ""} label={
             <div className={classes.labelRoot}>
-                <StarBorderOutlinedIcon className={classes.reviewIcon} />
+                <StarBorderOutlinedIcon className={rtl ? classes.reviewIconRtl : classes.reviewIcon} />
                 <span className={classes.label}>{'Reviews'}</span>
             </div>
         }>

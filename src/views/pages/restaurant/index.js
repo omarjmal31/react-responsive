@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import { makeStyles, Grid, IconButton } from '@material-ui/core';
 import { ArrowUpward } from '@material-ui/icons';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -46,24 +47,30 @@ const useStyles = makeStyles((theme) => ({
     display: 'none'
   },
   flagButton: {
-    position: 'absolute',
+    position: 'fixed',
     left: '30px',
+    bottom: '-7px'
+  },
+  flagButtonRtl: {
+    position: 'fixed',
+    right: '30px',
     bottom: '-7px'
   }
 }));
 
-function Restaurant() {
+function Restaurant(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
+    rtl: false
   });
 
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [expanded, setExpanded] = React.useState([]);
-
+  
   const toggleDrawer = (side, open) => event => {
     if (
       event &&
@@ -83,7 +90,7 @@ function Restaurant() {
   return (
     <div className={classes.restaurant}>
       <Carousel swipeable={true} dynamicHeight={false} showThumbs={false} showStatus={false}>
-        <div>
+        <div onClick={() => props.history.push("/detail")}>
           <img src={Background} alt={'FRIED ITEM'} />
           <p className="legend">FRIED ITEM</p>
         </div>
@@ -96,11 +103,11 @@ function Restaurant() {
           <p className="legend">FRIED ITEM</p>
         </div>
       </Carousel>
-      <Grid container justify={'center'} className={classes.bottomBar}>
+      <Grid container justify={'center'} className={classes.bottomBar} style={state.rtl ? {direction: 'rtl'} : {direction: 'ltr'}}>
         <IconButton className={`${classes.btnArrow} ${state.bottom === true ? classes.showBtn : '='}`} color={'primary'} onClick={toggleDrawer('bottom', true)}><ArrowUpward color="white" /></IconButton>
-        <div className={classes.flagButton}>
-          <IconButton ><Avatar src={Flag1} /></IconButton>
-          <IconButton ><Avatar src={Flag2} /></IconButton>
+        <div className={state.rtl ? classes.flagButtonRtl : classes.flagButton}>
+          <IconButton onClick={() => setState({ ...state, rtl: false })}><Avatar src={Flag1} /></IconButton>
+          <IconButton onClick={() => setState({ ...state, rtl: true })}><Avatar src={Flag2} /></IconButton>
         </div>
       </Grid>
       
@@ -110,4 +117,4 @@ function Restaurant() {
   );
 }
 
-export default Restaurant;
+export default withRouter(Restaurant);
