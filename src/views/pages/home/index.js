@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
@@ -131,7 +131,7 @@ const useStyles = makeStyles({
   }
 });
 
-function Home() {
+function Home(props) {
   const classes = useStyles();
   const [restaurant, setRestaurant] = useState("");
   const [email, setEmail] = useState("");
@@ -141,6 +141,7 @@ function Home() {
 
   const handleChange = (event) => {
     setRestaurant(event.target.value);
+    props.history.push("/restaurant");
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -280,4 +281,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default withRouter(Home);
