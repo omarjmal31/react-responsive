@@ -1,47 +1,42 @@
-.carousel.carousel-slider {
-    height: 100vh;
-}
+@media screen and (min-width: 425px) {
+    .carousel .slide .legend {
+        top: 40%;
+        bottom: unset;
+        margin-left: 0px;
+        width: unset;
+        left: 25.5%;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        opacity: 1;
+        background: transparent;
+    }
+    .app-icon {
+        width: 50%;
+    }
 
-.carousel .slide img {
-    height: 100vh;
-}
+    .select-restaurant {
+        width: 90%;
+    }
 
-.carousel .slide .legend {
-    top: 40%;
-    bottom: unset;
-    margin-left: 0px;
-    width: unset;
-    left: 45.5%;
-    font-size: 40px;
-    font-weight: bold;
-    color: white;
-    opacity: 1;
-    background: transparent;
-}
+    .scan-button {
+        width: 90%;
+    }
+  }
 
-.app-icon {
-    z-index: 1;
-    width: 25%;
-    margin-bottom: 80px;
-}
-
-.select-restaurant {
-    width: 40%;
-}
-
-.scan-button {
-    background-color: #0051ae !important;
-    border-radius: 30px !important;
-    width: 15%;
-    height: 50px;
-    color: white !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    text-transform: capitalize !important;
-    margin-bottom: 70px !important;
-}
-
-@media (max-width: 1400px) {
+@media screen and (min-width: 1024px) {
+    .carousel .slide .legend {
+        top: 40%;
+        bottom: unset;
+        margin-left: 0px;
+        width: 250px;
+        left: 43.5%;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        opacity: 1;
+        background: transparent;
+    }
     .app-icon {
         width: 40%;
     }
@@ -55,16 +50,40 @@
     }
 }
 
-@media (max-width: 1023px) {
+@media screen and (min-width: 1400px) {
     .app-icon {
-        width: 50%;
+        width: 25%;
     }
-
+    
     .select-restaurant {
-        width: 90%;
+        width: 40%;
     }
-
+    
     .scan-button {
-        width: 90%;
+        width: 15%;
     }
+}
+
+.carousel.carousel-slider {
+    height: 100vh;
+}
+
+.carousel .slide img {
+    height: 100vh;
+}
+
+.app-icon {
+    z-index: 1;
+    margin-bottom: 80px;
+}
+
+.scan-button {
+    background-color: #0051ae !important;
+    border-radius: 30px !important;
+    height: 50px;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    margin-bottom: 70px !important;
 }
